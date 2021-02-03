@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:define name="Cadastro de colaboradores">
+	<h1 class="title ui-widget-header ui-corner-all">
+		<h:outputText value="Cadastro de colaboradores"/>
+	</h1>
+</ui:define>
+
+<ui:define name="conteudo">
+	<div class="ui-g-12">
+		<div class="ui-g-2 labelAlignLeft" style="margin-left:1%">
+			<h:outputLabel value="Nome:" for="nome_Colaborador"/>
+		</div> 
+		<div class="ui-g-6">
+			<h:inputText id="nome_colaborador"
+				value="#{colaboradorMB.col.nome}"
+				style="width:80%" maxlength="100" />
+		</div>
+	</div>
+	
+	<div class="ui-g-12">
+		<div class="ui-g-2 labelAlignLeft" style="margin-left:1%">
+			<h:outputLabel value="CPF:" for="cpf_Colaborador"/>
+		</div> 
+		<div class="ui-g-6">
+			<h:inputMask id="cpf_colaborador"
+				mask="999.999.999-99"
+				value="#{colaboradorMB.col.cpf}"
+				style="width:80%"/>
+		</div>
+	</div>
+	
+	<div class="ui-g-12">
+		<div class="ui-g-2 labelAlignLeft" style="margin-left:1%">
+			<h:outputLabel value="Opção de café:" for="opcao_Colaborador"/>
+		</div> 
+		<div class="ui-g-6">
+			<h:inputText id="opcao_colaborador"
+				value="#{colaboradorMB.col.cafeManha}"
+				style="width:80%"/>
+		</div>
+	</div>
+	
+	<p:commandButton value="Cadastrar"
+		id="bttnCadastrar" action="#{colaboradorMB.salvar}"
+		title="Cadastrar" ajax="false"/>
+	
+</ui:define>
+
+</html>

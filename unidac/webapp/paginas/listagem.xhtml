@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<ui:define name="Listagem de Colaboradores">
+	<h1 class="title ui-widget-header ui-corner-all">
+		<h:outputText value="Listagem de Colaboradores"/>
+	</h1>
+</ui:define>
+
+<ui:define name="conteudo">
+	<h:form id="listagemForm">
+		<p:panel styleClass="">
+		
+		<div class="ui-g-12">
+			<div class="ui-g-5 direita">
+				<p:outputLabel value="CPF:" for="input_cpf" />
+				<div class="ui-g-6">
+					<p:inputMask id="input_cpf" mask="999.999.999-99" size="11"
+						value="#{colaboradorMB.col.cpf}" />
+				</div>
+			</div>
+		</div>
+		
+		<p:commandButton value="Consultar"
+			id="bttnConsultar" action="#{colaboradorMB.procurar}"
+			title="Consultar" ajax="false"
+			update="@form"/>
+			
+			<p:dataTable id="dataTableColaboradores" var=colaborador
+				value="#{colaboradorMB.dataModel}" rows="10" paginator="true"
+				paginatorPosition="bottom" lazy="true" sortBy="#{colaborador.codigo}"
+				emptyMessage="Nenhum colaborador cadastraado ainda"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,20,50,100">
+			
+				<p:columnGroup type="header">
+					<p:column headerText="Nome" width="20%" />
+					<p:column headerText="CPF" width="20%" />
+					<p:column headerText="Café da manhã" width="20%" />
+				</p:columnGroup>
+				
+				<p:column styleClass="alignCenter">
+					<h:outputText value="#{colaborador.nome}" />
+				</p:column>
+				
+				<p:column styleClass="alignCenter">
+					<h:outputText value="#{colaborador.cpf}" />
+				</p:column>
+					
+				<p:column styleClass="alignCenter">
+					<h:outputText value="#{colaborador.cafeManha}" />
+				</p:column>
+					
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+</ui:define>
+	
+</html>
